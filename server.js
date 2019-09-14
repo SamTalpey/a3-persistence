@@ -1,11 +1,14 @@
 const express = require('express'),
     server = express(),
     bodyparser = require('body-parser'),
-    dir = '/public/',
     low = require('lowdb'),
     FileSync = require('lowdb/adapters/FileSync'),
     adapter = new FileSync('db.json'),
     db = low(adapter);
+
+const jobList = [
+  {'name': 'test', 'job': 'Knobs + Rags', 'day': 'Tuesday"'}
+]
 
 // Setting defaults for empty JSON file
 db.defaults({ posts: [], user: {}, count: 0})
@@ -19,20 +22,21 @@ db.get('posts')
 
 // Deliver all files to public folder
 // TODO this doesnt actually seem to do anything
-server.use(express.static('public'));
+server.use(express.static('public/'));
 
 // Get JSON when relevant
 server.use(bodyparser.json());
 
 // Explicity handle domain name
 server.get('/', function(req, res) {
-  res.sendFile(__dirname + dir + '/views/index.html');
+  res.sendFile(__dirname + '/public/index.html');
 })
 
-server.post('/submit', function(req, res) {
+server.post('/', function(req, res) {
   // TODO push here?
-  response.writeHead(200, {'Content-Type': 'application/json'});
-  response.end(JSON.stringify(request.json));
+  console.log('POST request to homepage');
+  res.writeHead(200, {'Content-Type': 'application/json'});
+  res.end(JSON.stringify(req.json));
 })
 
 server.listen(process.env.PORT || 3000);
