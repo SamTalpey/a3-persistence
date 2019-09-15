@@ -65,7 +65,7 @@ Include a very brief summary of your project here. Images are encouraged, along 
 - the five Express middleware packages you used and a short (one sentence) summary of what each one does.
 
 ## Technical Achievements
-- **Tech Achievement 1**: I used OAuth authentication via the GitHub strategy
+- **Dynamic Table**: Implemented real-time syncing of lowdb and server memory allowing dynamic updates
 - **Tech Achievement 2**: I used over ten Express middleware packages, enabling me to create a server that...
 
 ### Design/Evaluation Achievements

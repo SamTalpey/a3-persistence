@@ -6,22 +6,13 @@ const express = require('express'),
     adapter = new FileSync('db.json'),
     db = low(adapter);
 
-const jobList = [
-  {'name': 'test', 'job': 'Knobs + Rags', 'day': 'Tuesday"'}
-]
+const jobs = [];
 
 // Setting defaults for empty JSON file
-db.defaults({ posts: [], user: {}, count: 0})
-  .write()
-
-// Handling posts
-db.get('posts')
-  // TODO Add the actual data
-  .push({id: 1, title: 'lowdb works'})
-  .write()
+db.defaults({ jobs: [], count: 0})
+  .write();
 
 // Deliver all files to public folder
-// TODO this doesnt actually seem to do anything
 server.use(express.static('public/'));
 
 // Get JSON when relevant
@@ -32,11 +23,28 @@ server.get('/', function(req, res) {
   res.sendFile(__dirname + '/public/index.html');
 })
 
-server.post('/', function(req, res) {
-  // TODO push here?
-  console.log('POST request to homepage');
+// Handling requests for job data for tables
+server.get('/tables', function(req, res) {
+  console.log('GET request to /tables');
   res.writeHead(200, {'Content-Type': 'application/json'});
-  res.end(JSON.stringify(req.json));
+  res.end(JSON.stringify(jobs));
 })
 
+// Handling posts from form submissions
+server.post('/submit', bodyparser.json(), function(req, res) {
+  console.log('POST request to /submit');
+  jobs.push(req.body);
+  db.get('jobs')
+    .push(req.body)
+    .write();
+  res.writeHead(200, {'Content-Type': 'application/json'});
+  res.end(JSON.stringify(jobs));
+})
+
+// Updating server memory from file
+db.get('jobs').value().forEach(job => {
+  jobs.push(job);
+});
+console.log('Current jobs stored are listed below');
+console.log(jobs);
 server.listen(process.env.PORT || 3000);
