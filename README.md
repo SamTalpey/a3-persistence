@@ -4,8 +4,6 @@ Assignment 3 - Persistence: Two-tier Web Application with Flat File Database, Ex
 
 http://a3-samtalpey.glitch.me
 
-Include a very brief summary of your project here. Images are encouraged, along with concise, high-level text. Be sure to include:
-
 - The goal of this tracker is to make it easier to manage house jobs for my duty as house manager, as well as to allow multiple people to edit the jobs without editing the in-depth points spreadsheet we have
 - Challenges included understanding the idea of server development vs application development. I had massive trouble grasping the idea of requests and callback up until halfway through this assignment
 - For my authentication, I simply use passport-local with the local users being saved to the lowdb database
@@ -18,6 +16,8 @@ Include a very brief summary of your project here. Images are encouraged, along 
   - Morgan
   - LowDB
   - Compression
+
+- I have added some sample jobs and users to demonstrate functionalities. Try logging into admin/admin or Sam/password and see what jobs are indicated 
 
 ## Technical Achievements
 - **Dynamic Memory/DB**: Implemented real-time syncing of lowdb and server memory allowing dynamic updates
