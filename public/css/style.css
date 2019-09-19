@@ -34,8 +34,13 @@ h5 {
   margin-bottom: 5px;
 }
 
+#temp {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
 #jobForm {
-  display: block;
   text-align: center;
 }
 

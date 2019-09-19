@@ -127,8 +127,13 @@
         </div>
       </div>
     </div>
-    <div id="jobForm">
-      <h3>Add or reassign a house job</h3>
+    <div id="temp">
+      <h3>Login to edit house jobs</h3>
+      <button type="button" id="loginBtn" onclick="window.location='/login'">Login</button>
+      <button type="button" id="displayBtn" class="display">Show Form</button>
+    </div>
+    <div id="jobForm" hidden>
+      <h3>Assign or edit a house job</h3>
       <h5>To remove a job, submit a blank form</h5>
       <form action="" id="form">
         Name:<input type="text" id="name"><br>
@@ -151,7 +156,7 @@
         <input type="radio" name="day" id="thur" value="thur">Thursday<br>
       </form>      
         <button type="button" id="submitBtn" class="submit">Submit</button>
-        <button type="button" id="resetBtn" class ="reset">Reset Day</button>
+        <button type="button" id="resetBtn" class="reset">Reset Day</button><br>
     </div>
   </body>
 </html>

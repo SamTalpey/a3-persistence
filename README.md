@@ -51,22 +51,22 @@ Do the following to complete this assignment:
 Sample Readme (delete the above when you're ready to submit, and modify the below so with your links and descriptions)
 ---
 
-## Your Web Application Title
+## AXP House Job Tracker
 
-your glitch link e.g. http://a3-charlieroberts.glitch.me
+http://a3-charlieroberts.glitch.me
 
 Include a very brief summary of your project here. Images are encouraged, along with concise, high-level text. Be sure to include:
 
-- the goal of the application
-- challenges you faced in realizing the application
-- what authentication strategy / database you chose to use and why (choosing one because it seemed the easiest to implement is perfectly acceptable)
+- The goal of this tracker is to make it easier to manage house jobs for my duty as house manager, as well as to allow multiple people to edit the jobs without editing the points spreadsheet we have
+- Challenges included understanding the idea of server development vs application development
+- For my authentication, I simply use passport-local with the local users being saved to the lowdb database
 - what CSS framework you used and why.
   - include any modifications to the CSS framework you made via custom CSS you authored.
-- the five Express middleware packages you used and a short (one sentence) summary of what each one does.
+- The five express middleware packages I used were: body-parser, compression, morgan, session, and passport
 
 ## Technical Achievements
 - **Dynamic Table**: Implemented real-time syncing of lowdb and server memory allowing dynamic updates
-- **Tech Achievement 2**: I used over ten Express middleware packages, enabling me to create a server that...
+- **Morgan Request Logging**: Using the morgan middleware package, all requests are logged
 
 ### Design/Evaluation Achievements
 - **Design Achievement 1**: I tested my application using screen reading software, and found that...
