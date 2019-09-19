@@ -1,9 +1,38 @@
 {
-  "jobs": [],
+  "jobs": [
+    {
+      "name": "hjnftrsdx",
+      "job": "TV",
+      "day": "tues",
+      "owner": "admin"
+    },
+    {
+      "name": "hjnftrsdx",
+      "job": "2brShower",
+      "day": "tues",
+      "owner": "admin"
+    },
+    {
+      "name": "test",
+      "job": "Foyer",
+      "day": "tues",
+      "owner": "admin"
+    },
+    {
+      "name": "sam",
+      "job": "Knob",
+      "day": "tues",
+      "owner": "admin"
+    }
+  ],
   "users": [
     {
       "username": "admin",
       "password": "admin"
+    },
+    {
+      "username": "test",
+      "password": "test"
     }
   ],
   "count": 0

@@ -13,8 +13,8 @@ const html = require('html'),
     compression = require('compression'),
     morgan = require('morgan');
 
-const jobs = [];
-const users = [];
+var jobs = [];
+var users = [];
 
 const myLocalStrategy = function(username, password, done) {
   console.log('Trying to authenticate');
@@ -106,11 +106,21 @@ server.get('/badLogin', function(req, res) {
 });
 
 // Handling posts from form submissions
-server.post('/submit',
-  //passport.authenticate('local', {failureRedirect: '/badLogin'}), 
-  bodyparser.json(),
+server.post('/submit', bodyparser.json(),
   function(req, res) {
     req.body['owner'] = req.user.username;
+    let dupe = db.get('jobs').find({job: req.body.job}).value();
+    console.log('Dupe should be:', db.get('jobs').find({job: req.body.job}).value())
+    console.log('Dupe:', dupe);
+    if(typeof(dupe) != 'undefined') {
+      db.get('jobs')
+        .remove({job: req.body['job']})
+        .write();
+      jobs = jobs.filter(function(value, index, arr) {
+        return value.job != req.body['job'];
+      })
+      console.log(jobs);
+    }
     jobs.push(req.body);
     db.get('jobs')
       .push(req.body)

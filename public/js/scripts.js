@@ -58,25 +58,12 @@ const display = function() {
     username = user['username'];
     console.log('Checking if logged in (tables)');
     console.log(username, typeof username);
-    // Sets job form to visible if a user logged in 
+    // Sets job form to visible if a user is logged in 
     if(typeof(username) === 'string' && username != '!display') {
       document.getElementById('jobForm').hidden = false;
-      document.getElementById('temp').hidden = true;
-      console.log('Form visible');
+      document.getElementById('displayBtn').hidden = true;
     }
   })
-}
-
-// Reset day function for button
-const reset = function() {
-  let day = function() {
-        if(document.getElementById('tues').checked) {
-          return document.getElementById('tues').value;
-        }
-        else return document.getElementById('thur').value;
-      }
-  
-  // TODO Reset jobs for given day
 }
 
 // Fetch login page
@@ -98,7 +85,6 @@ const getTables = function() {
 
 // Update tables with data from server
 const updateTables = function(jobs) {
-  // TODO requires user to be logged in in order to show data 
   var username = '';
   fetch('/username', {
     method: 'GET',
@@ -124,8 +110,6 @@ window.onload = function() {
   if(document.URL.endsWith('/')) {
     const submitBtn = document.querySelector('.submit');
     submitBtn.onclick = submit;
-    const resetBtn = document.querySelector('.reset');
-    resetBtn.onclick = reset;
     const displayBtn = document.querySelector('.display');
     displayBtn.onclick = display;
     getTables();
